@@ -1,0 +1,10 @@
+# BEBC diffractive muon neutrino 
+# P. Allen et al, Single meson production, Nucl. Phys. B264 (1986), 221-242
+# D. Rein, Diffractive pion production, Nucl. Phys. B278 (1986), 61-77
+# Data digitized from a plot, so the significant digits are misleading!
+# Data digitized with: http://arohatgi.info/WebPlotDigitizer/
+# bin center, xsec cm^2, bin low, bin high, err low, err high
+15, 7.344784259772693e-40, 10, 20, 5.091848409762527e-40, 9.78148712297226e-40
+25, 1.0340930627601542e-39, 20, 30, 7.490295725907768e-40, 1.3329355692355202e-39
+40, 9.203021135312307e-40, 30, 50, 6.122501982971013e-40, 1.2835122101879077e-39
+75, 1.6310340228690948e-39, 50, 100, 1.0471280262243514e-39, 2.214940019513839e-39

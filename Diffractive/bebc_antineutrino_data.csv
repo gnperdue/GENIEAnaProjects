@@ -1,0 +1,10 @@
+# BEBC diffractive muon anti-neutrino 
+# P. Allen et al, Single meson production, Nucl. Phys. B264 (1986), 221-242
+# D. Rein, Diffractive pion production, Nucl. Phys. B278 (1986), 61-77
+# Data digitized from a plot, so the significant digits are misleading!
+# Data digitized with: http://arohatgi.info/WebPlotDigitizer/
+# bin center, xsec cm^2, bin low, bin high, err low, err high
+15, 8.793799043062212e-40, 10, 20, 6.9668899521531055e-40, 1.0909167464114834e-39
+25, 1.1830583732057419e-39, 20, 30, 8.657531100478466e-40, 1.466710047846889e-39
+35, 1.9771100478468893e-39, 30, 40, 1.4482679425837317e-39, 2.5924899521531102e-39
+60, 2.017561722488038e-39, 40, 80, 1.440643062200957e-39, 2.6233339712918658e-39

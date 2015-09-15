@@ -5,7 +5,10 @@ Usage:
     python plot_splines.py <-f>/<-flag> <arg>
                            -c / --cm2         : Plot cross seciton in cm^{2}
                            -s / --splines spline1,spline2,spline3,...
+                           -m / --models model1,model2,model3,..
 
+Note: the default for models is 'all of them'. If you add the models flag,
+you may restrict the output to just what is requested.
 '''
 from __future__ import print_function
 from xml.etree import ElementTree as ET
@@ -97,7 +100,7 @@ def process_spline(spline):
     return {'description': description, 'xsecs': xsecs}
 
 
-def xml_to_list_of_dicts(xml_file_name):
+def xml_to_list_of_dicts(xml_file_name, models):
     """
     Take an xml file and return a list of dictionaries, where each dictionary
     contains a description and a list of tuples for energy and cross section.
@@ -109,7 +112,9 @@ def xml_to_list_of_dicts(xml_file_name):
 
     for spline in splines:
         xsec_dict = process_spline(spline)
-        neutrino_xsecs.append(xsec_dict)
+        if 'all' in models \
+                or xsec_dict['description']['algorithm'] in models:
+            neutrino_xsecs.append(xsec_dict)
 
     return neutrino_xsecs
 
@@ -147,7 +152,7 @@ def write_xsecs(list_of_dicts, min_e, max_e):
                   " sum = " + str(xssum) + " x 10^(-38) cm^2", file=f)
 
 
-def spline_list_split(option, opt, value, parser):
+def arg_list_split(option, opt, value, parser):
     setattr(parser.values, option.dest, value.split(','))
 
 
@@ -160,11 +165,16 @@ if __name__ == '__main__':
     parser.add_option('-x', '--max', type='float', default=120.0,
                       help=r'Maximum energy', dest='max_e')
     parser.add_option('-s', '--splines', type='string', action='callback',
-                      callback=spline_list_split, dest='spline_files')
+                      callback=arg_list_split, dest='spline_files')
+    parser.add_option('-m', '--models', type='string', action='callback',
+                      callback=arg_list_split, dest='models')
     (options, args) = parser.parse_args()
+
+    models = options.models if options.models else ['all']
+    models = set(models)
 
     list_of_dicts = []
     for spline_file in options.spline_files:
-        list_of_dicts.extend(xml_to_list_of_dicts(spline_file))
+        list_of_dicts.extend(xml_to_list_of_dicts(spline_file, models))
 
     write_xsecs(list_of_dicts, options.min_e, options.max_e)

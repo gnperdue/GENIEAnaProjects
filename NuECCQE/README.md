@@ -51,8 +51,23 @@
         ReinDFRPXSec_Muon_Neutrino_CC_on_Hydrogen.txt
         ReinDFRPXSec_Muon_Neutrino_NC_on_Hydrogen.txt
 
+* Next, run `python print_splines.py --splines gxspl-nuclear-MINERVA_Full_2_6_2.xml --models ReinSeghalCOHPiPXSec`
+to produce:
+
+        ReinSeghalCOHPiPXSec_Electron_Antineutrino_CC_on_Hydrogen.txt
+        ReinSeghalCOHPiPXSec_Electron_Antineutrino_NC_on_Hydrogen.txt
+        ReinSeghalCOHPiPXSec_Electron_Neutrino_CC_on_Hydrogen.txt
+        ReinSeghalCOHPiPXSec_Electron_Neutrino_NC_on_Hydrogen.txt
+        ReinSeghalCOHPiPXSec_Muon_Antineutrino_CC_on_Hydrogen.txt
+        ReinSeghalCOHPiPXSec_Muon_Antineutrino_NC_on_Hydrogen.txt
+        ReinSeghalCOHPiPXSec_Muon_Neutrino_CC_on_Hydrogen.txt
+        ReinSeghalCOHPiPXSec_Muon_Neutrino_NC_on_Hydrogen.txt
+
+* Actually, the above step will produce way more files than that, but all we
+_care about_ are the ones listed.
+
 * Finally, run `python flux_convolution.py`. Note that this procedure normalizes
-the flux files to unity.
+the flux files to unity. Note, the actual ouptut now includes the ReinSeghalCOHPiPXSec also.
 
         CC Carbon
         Anti-electron neutrino CC on Carbon total xsec = 37.6117856754 x 10^(-38) cm2

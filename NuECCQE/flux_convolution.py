@@ -115,6 +115,18 @@ if __name__ == '__main__':
                      'ReinDFRPXSec_Muon_Antineutrino_NC_on_Hydrogen.txt',
                      'ReinDFRPXSec_Muon_Neutrino_NC_on_Hydrogen.txt']
 
+    rscoh_cc_files = [
+        'ReinSeghalCOHPiPXSec_Electron_Antineutrino_CC_on_Carbon.txt',
+        'ReinSeghalCOHPiPXSec_Electron_Neutrino_CC_on_Carbon.txt',
+        'ReinSeghalCOHPiPXSec_Muon_Antineutrino_CC_on_Carbon.txt',
+        'ReinSeghalCOHPiPXSec_Muon_Neutrino_CC_on_Carbon.txt']
+
+    rscoh_nc_files = [
+        'ReinSeghalCOHPiPXSec_Electron_Antineutrino_NC_on_Carbon.txt',
+        'ReinSeghalCOHPiPXSec_Electron_Neutrino_NC_on_Carbon.txt',
+        'ReinSeghalCOHPiPXSec_Muon_Antineutrino_NC_on_Carbon.txt',
+        'ReinSeghalCOHPiPXSec_Muon_Neutrino_NC_on_Carbon.txt']
+
     print('CC Carbon')
     for i in range(4):
         xs = fconvolve(flux_files[i], carbon_cc_files[i],
@@ -165,4 +177,22 @@ if __name__ == '__main__':
         xs = fconvolve(flux_files[i], rein_nc_files[i],
                        options.min_e, options.max_e)
         print(labels[i] + ' NC on Hydrogen total xsec = ' +
+              str(xs) + ' x 10^(-38) cm2')
+
+    print()
+
+    print('Rein-Sehgal COH CC Carbon')
+    for i in range(4):
+        xs = fconvolve(flux_files[i], rscoh_cc_files[i],
+                       options.min_e, options.max_e)
+        print(labels[i] + ' CC on Carbon total xsec = ' +
+              str(xs) + ' x 10^(-38) cm2')
+
+    print()
+
+    print('Rein-Sehgal COH NC Carbon')
+    for i in range(4):
+        xs = fconvolve(flux_files[i], rscoh_nc_files[i],
+                       options.min_e, options.max_e)
+        print(labels[i] + ' NC on Carbon total xsec = ' +
               str(xs) + ' x 10^(-38) cm2')
